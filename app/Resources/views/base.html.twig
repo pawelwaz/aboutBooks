@@ -25,7 +25,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div id="toppanel"><img src="{{ asset('logo.png') }}" /></div>
+        <div id="toppanel">
+            <img src="{{ asset('logo.png') }}" />
+            {% block menu %}{% endblock %}
+        </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>

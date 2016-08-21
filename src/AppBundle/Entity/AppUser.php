@@ -27,6 +27,7 @@ class AppUser {
 	
 	public function setPassword($newPassword) {
 		$this->password = $newPassword;
+		$this->hashPassword();
 	}
 	
 	public function getPassword() {
@@ -51,5 +52,9 @@ class AppUser {
 	
 	public function hidePassword() {
 		$this->password = "";
+	}
+	
+	public function hashPassword() {
+		$this->password = md5($this->password);
 	}
 }

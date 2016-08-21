@@ -20,6 +20,7 @@
 				{{ form_widget(loginForm.zaloguj, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
 				{{ form_end(loginForm) }}
 			</div>
+			<div class="alert alert-danger" role="alert">{{ loginError }}</div>
 		</td>
 		<td valign="top">
 			<div class="well big-well">
@@ -31,6 +32,7 @@
 				{{ form_widget(registerForm.zarejestruj, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
 				{{ form_end(registerForm) }}
 			</div>
+			<div class="alert alert-success" role="alert">{{ regSuccess }}</div>
 			<div class="alert alert-danger" role="alert">{{ regError }}</div>
 		</td>
 	</tr>
