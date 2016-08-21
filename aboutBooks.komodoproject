@@ -2,5 +2,6 @@
 <!-- Komodo Project File - DO NOT EDIT -->
 <project id="dffb8b81-8e6b-48f4-b8da-4887b44ee180" kpf_version="5" name="aboutBooks.komodoproject">
 <preference-set idref="dffb8b81-8e6b-48f4-b8da-4887b44ee180" id="project" preftype="project">
+  <long id="prefs_version">1</long>
 </preference-set>
 </project>

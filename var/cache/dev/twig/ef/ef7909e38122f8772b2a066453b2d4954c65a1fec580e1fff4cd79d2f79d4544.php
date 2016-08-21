@@ -21,27 +21,26 @@ class __TwigTemplate_482560f47e0faf1b198204ce42b0a4a995c3f64e884822e3a95ef7a2f27
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_80179b8553d66ffe315dbfc4a1fc980c5470f814f986131a4da28837c575de92 = $this->env->getExtension("native_profiler");
-        $__internal_80179b8553d66ffe315dbfc4a1fc980c5470f814f986131a4da28837c575de92->enter($__internal_80179b8553d66ffe315dbfc4a1fc980c5470f814f986131a4da28837c575de92_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login/login.html.twig"));
+        $__internal_118db1c91191a9698124767052c303fc575f6d247ba96644c67158683179baec = $this->env->getExtension("native_profiler");
+        $__internal_118db1c91191a9698124767052c303fc575f6d247ba96644c67158683179baec->enter($__internal_118db1c91191a9698124767052c303fc575f6d247ba96644c67158683179baec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login/login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_80179b8553d66ffe315dbfc4a1fc980c5470f814f986131a4da28837c575de92->leave($__internal_80179b8553d66ffe315dbfc4a1fc980c5470f814f986131a4da28837c575de92_prof);
+        $__internal_118db1c91191a9698124767052c303fc575f6d247ba96644c67158683179baec->leave($__internal_118db1c91191a9698124767052c303fc575f6d247ba96644c67158683179baec_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_3a4db254eef2c0dee6893a386802da4fd32758872f139669d9b137523dc8a042 = $this->env->getExtension("native_profiler");
-        $__internal_3a4db254eef2c0dee6893a386802da4fd32758872f139669d9b137523dc8a042->enter($__internal_3a4db254eef2c0dee6893a386802da4fd32758872f139669d9b137523dc8a042_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_3875a010fc65d11c8edf7e9be124e336ae66835c69bdba74006a65294d4e46c1 = $this->env->getExtension("native_profiler");
+        $__internal_3875a010fc65d11c8edf7e9be124e336ae66835c69bdba74006a65294d4e46c1->enter($__internal_3875a010fc65d11c8edf7e9be124e336ae66835c69bdba74006a65294d4e46c1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "<h1>login</h1>
-<button type=\"button\" class=\"btn btn-primary\">Primary</button>
 ";
         
-        $__internal_3a4db254eef2c0dee6893a386802da4fd32758872f139669d9b137523dc8a042->leave($__internal_3a4db254eef2c0dee6893a386802da4fd32758872f139669d9b137523dc8a042_prof);
+        $__internal_3875a010fc65d11c8edf7e9be124e336ae66835c69bdba74006a65294d4e46c1->leave($__internal_3875a010fc65d11c8edf7e9be124e336ae66835c69bdba74006a65294d4e46c1_prof);
 
     }
 
@@ -64,6 +63,5 @@ class __TwigTemplate_482560f47e0faf1b198204ce42b0a4a995c3f64e884822e3a95ef7a2f27
 /* */
 /* {% block body %}*/
 /* <h1>login</h1>*/
-/* <button type="button" class="btn btn-primary">Primary</button>*/
 /* {% endblock %}*/
 /* */

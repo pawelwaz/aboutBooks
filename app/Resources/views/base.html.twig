@@ -3,13 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}aboutBooks{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
+            <style>
+                {% block stylesheets %}
+                {% endblock %}
+                #toppanel {
+                    background-color: #000000;
+                    width: 100%;
+                }
+                .form-element {
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                }
+                h5 {
+                    font-weight: bold;
+                }
+                div:empty {
+                    display: none;
+                }
+            </style>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
+        <div id="toppanel"><img src="{{ asset('logo.png') }}" /></div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        {% block javascripts %}
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

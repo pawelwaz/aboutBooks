@@ -24,10 +24,10 @@
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">null</parameter>
-    <parameter key="database_name">symfony</parameter>
-    <parameter key="database_user">root</parameter>
-    <parameter key="database_password">null</parameter>
+    <parameter key="database_port">3306</parameter>
+    <parameter key="database_name">aboutBooks</parameter>
+    <parameter key="database_user">aboutBooks</parameter>
+    <parameter key="database_password">aboutBooks</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -487,7 +487,7 @@
                   <tag name="cache.pool"/>
                   <argument>K1yy8QzckR</argument>
                   <argument></argument>
-                  <argument>eQYQU6CLkD-QAvoo9y2D-Q</argument>
+                  <argument>nzeP--8YpOwwICOmWMyErA</argument>
                   <argument>D:\symfony\aboutBooks\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -500,7 +500,7 @@
                   <tag name="cache.pool"/>
                   <argument>5O5pmqRHMi</argument>
                   <argument></argument>
-                  <argument>eQYQU6CLkD-QAvoo9y2D-Q</argument>
+                  <argument>nzeP--8YpOwwICOmWMyErA</argument>
                   <argument>D:\symfony\aboutBooks\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -832,7 +832,7 @@
       <tag name="cache.pool"/>
       <argument>jIJgc3fPvD</argument>
       <argument></argument>
-      <argument>eQYQU6CLkD-QAvoo9y2D-Q</argument>
+      <argument>nzeP--8YpOwwICOmWMyErA</argument>
       <argument>D:\symfony\aboutBooks\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1568,7 +1568,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57a6f03b43c0e3.26215144</argument>
+            <argument>57b83fb692b2b4.58155712</argument>
           </service>
         </argument>
       </argument>
@@ -1702,7 +1702,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57a6f03b43c0e3.26215144</argument>
+            <argument>57b83fb692b2b4.58155712</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2001,10 +2001,10 @@
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
-        <argument key="port">null</argument>
-        <argument key="dbname">symfony</argument>
-        <argument key="user">root</argument>
-        <argument key="password">null</argument>
+        <argument key="port">3306</argument>
+        <argument key="dbname">aboutBooks</argument>
+        <argument key="user">aboutBooks</argument>
+        <argument key="password">aboutBooks</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
@@ -2089,7 +2089,9 @@
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
           </call>
           <call method="setMetadataCacheImpl">
             <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
@@ -2102,7 +2104,19 @@
           </call>
           <call method="setMetadataDriverImpl">
             <argument type="service">
-              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false"/>
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>D:\symfony\aboutBooks\src\AppBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
             </argument>
           </call>
           <call method="setProxyDir">

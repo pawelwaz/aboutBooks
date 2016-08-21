@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	.big-well {
+		margin: 5px;
+		text-align: center;
+		min-width: 300px;
+	}
+{% endblock %}
+
+{% block body %}
+<table style="border: 0px; margin: 0px auto;">
+	<tr>
+		<td valign="top">
+			<div class="well big-well">
+				<h5>logowanie</h5>
+				{{ form_start(loginForm) }}
+				{{ form_widget(loginForm.login, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'login' } }) }}
+				{{ form_widget(loginForm.password, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'hasło' } }) }}
+				{{ form_widget(loginForm.zaloguj, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+				{{ form_end(loginForm) }}
+			</div>
+		</td>
+		<td valign="top">
+			<div class="well big-well">
+				<h5>tworzenie konta</h5>
+				{{ form_start(registerForm) }}
+				{{ form_widget(registerForm.login, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'login' } }) }}
+				{{ form_widget(registerForm.password, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'hasło' } }) }}
+				{{ form_widget(registerForm.retype, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'powtórz hasło' } }) }}
+				{{ form_widget(registerForm.zarejestruj, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+				{{ form_end(registerForm) }}
+			</div>
+			<div class="alert alert-danger" role="alert">{{ regError }}</div>
+		</td>
+	</tr>
+</table>
+{% endblock %}
