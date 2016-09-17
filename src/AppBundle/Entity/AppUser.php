@@ -24,6 +24,10 @@ class AppUser {
 	 * @ORM\Column(type="string", length=32)
 	 */
 	protected $password;
+	/**
+	 * @ORM\Column(type="integer")
+	 */
+	protected $creds;
 	
 	public function setPassword($newPassword) {
 		$this->password = $newPassword;
@@ -56,5 +60,13 @@ class AppUser {
 	
 	public function hashPassword() {
 		$this->password = md5($this->password);
+	}
+	
+	public function setCreds($newCreds) {
+		$this->creds = $newCreds;
+	}
+	
+	public function getCreds() {
+		return $this->creds;
 	}
 }

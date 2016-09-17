@@ -1,0 +1,16 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<div class="alert alert-danger" role="alert" style="max-width: 300px; margin: auto;">{{ saveError }}</div>
+	<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+		<h5>{{ header }}</h5>
+			{{ form_start(writerForm) }}
+			{{ form_widget(writerForm.name, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'imię' } }) }}
+			{{ form_widget(writerForm.surname, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nazwisko' } }) }}
+			{{ form_widget(writerForm.bio, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'opis' } }) }}
+			{{ form_widget(writerForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+			{{ form_end(writerForm) }}
+	</div>
+	<a href="/writers" class="btn btn-primary">powrót</a>
+{% endblock %}

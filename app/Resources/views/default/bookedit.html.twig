@@ -1,0 +1,17 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="well big-well" style="max-width: 300px">
+		<h5>{{ header }}</h5>
+		{{ form_start(bookForm) }}
+		{{ form_widget(bookForm.title, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'tytuł' } }) }}
+		{{ form_widget(bookForm.description, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'opis' } }) }}
+		<h5>Autor:</h5>
+		{{ form_widget(bookForm.writer, { 'attr': { 'class': 'form-element form-control' } }) }}
+		<h5>Gatunek:</h5>
+		{{ form_widget(bookForm.genre, { 'attr': { 'class': 'form-element form-control' } }) }}
+		{{ form_widget(bookForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+		{{ form_end(bookForm) }}
+		<a href="/books" class="btn btn-primary">powrót</a>
+	</div>
+{% endblock %}

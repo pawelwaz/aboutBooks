@@ -1,0 +1,43 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<h4>{{ writer.name }} {{ writer.surname }}</h4>
+	{% if (writer.moder == app.session.get('userId') or app.session.get('creds') == 1) %}
+		<a href="/writer/{{ writer.id }}" class="btn btn-primary" style="margin: 2px auto;">edytuj</a>
+	{% endif %}
+	<div class="well">
+		<h5>opis autora</h5>
+		{% if writer.bio|length > 0 %}
+			{{ writer.bio }}
+		{% else %}
+			ten pisarz nie posiada jeszcze opisu w bazie
+		{% endif %}
+		<h5>książki autora w bazie</h5>
+		{% if books|length > 0 %}
+			{% for book in books %}
+				<a href="/bookdetails/{{ book.id }}">{{ book.title }}</a><br/>
+			{% endfor %}
+		{% else %}
+			(autor nie posiada jeszcze książek w bazie)
+		{% endif %}
+	</div>
+	<div class="well" style="max-width: 400px; margin: 0px auto;">
+		<h5>napisz komentarz</h5>
+		{{ form_start(commentForm) }}
+		{{ form_widget(commentForm.content, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'treść komentarza' } }) }}
+		{{ form_widget(commentForm.ok, { 'attr': { 'class': 'form-element btn btn-primary', 'style' : 'display:inline;' } }) }}
+		{{ form_end(commentForm) }}
+	</div>
+	<h5>Komentarze</h5>
+	{% if comments|length > 0 %}
+		{% for comment in comments %}
+			<div class="well" style="text-align: left; max-width: 400px; margin: 2px auto;">
+				<h5>{{ comment.login }}</h5>
+				{{ comment.content }}
+			</div>
+		{% endfor %}
+	{% else %}
+		(jeszcze nikt nie skomentował tego autora)
+	{% endif %}
+{% endblock %}

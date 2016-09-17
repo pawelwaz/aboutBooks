@@ -1,0 +1,25 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<a href="/writer" class="btn btn-primary" style="margin: 5px auto;">dodaj pisarza</a>
+	<div class="well">
+		<h5 style="display: inline">wyszukaj</h5>
+		{{ form_start(searchForm,  { attr: {novalidate: 'novalidate'} } ) }}
+		{{ form_widget(searchForm.name, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'imię', 'style' : 'display:inline; max-width: 200px;' } }) }}
+		{{ form_widget(searchForm.surname, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nazwisko', 'style' : 'display:inline; max-width: 200px' } }) }}
+		{{ form_widget(searchForm.ok, { 'attr': { 'class': 'form-element btn btn-primary', 'style' : 'display:inline;' } }) }}
+		{{ form_end(searchForm, { 'render_rest' : false }) }}
+	</div>
+	{% if writers|length > 0 %}
+			{% for writer in writers %}
+				<div class="well" style="max-width: 300px; margin: 0px auto">
+					<a href="/writerdetails/{{ writer.id }}">{{ writer.name }} {{ writer.surname }}</a>
+				</div>
+			{% endfor %}
+	{% else %}
+		<div class="well">
+			<h5>brak autorów spełniających podane kryteria</h5>
+		</div>
+	{% endif %}
+{% endblock %}

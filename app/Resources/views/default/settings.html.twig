@@ -1,0 +1,32 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+	<h5>zmiana loginu</h5>
+	{{ form_start(loginChangeForm) }}
+	{{ form_widget(loginChangeForm.login, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nowy login' } }) }}
+	{{ form_widget(loginChangeForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+	{{ form_end(loginChangeForm) }}
+</div>
+<div class="alert alert-danger" role="alert" style="max-width: 300px; margin: auto;">{{ loginChangeError }}</div>
+<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ loginChangeSuccess }}</div>
+<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+	<h5>zmiana hasła</h5>
+	{{ form_start(passwordChangeForm) }}
+	{{ form_widget(passwordChangeForm.old, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'stare hasło' } }) }}
+	{{ form_widget(passwordChangeForm.new, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nowe hasło' } }) }}
+	{{ form_widget(passwordChangeForm.retype, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'powtórz nowe hasło' } }) }}
+	{{ form_widget(passwordChangeForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+	{{ form_end(passwordChangeForm) }}
+</div>
+<div class="alert alert-danger" role="alert" style="max-width: 300px; margin: auto;">{{ passwordChangeError }}</div>
+<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ passwordChangeSuccess }}</div>
+<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+	{% if app.session.get('creds') == 1 %}
+		typ konta: administrator
+	{% endif %}
+	{% if app.session.get('creds') == 0 %}
+		typ konta: użytkownik
+	{% endif %}
+</div>
+{% endblock %}

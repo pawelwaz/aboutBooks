@@ -1,0 +1,35 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<div class="alert alert-danger" role="alert" style="max-width: 300px; margin: auto;">{{ saveError }}</div>
+	<div class="well" style="max-width: 200px; margin: 5px auto;">
+		<h5 style="display: inline">{{ header }}</h5>
+		{{ form_start(genreForm) }}
+		{{ form_widget(genreForm.name, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nazwa', 'style' : 'max-width: 200px;' } }) }}
+		{{ form_widget(genreForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+		{{ form_end(genreForm) }}
+	</div>
+	{% if genres|length > 0 %}
+		<table class="table-bordered" style="margin: 5px auto;">
+			<thead>
+				<tr>
+					<td>gatunki</td>
+					<td>opcje</td>
+				</tr>
+			</thead>
+			{% for genre in genres %}
+				<tr>
+					<td>{{ genre.name }}</td>
+					<td>
+						<a href="/genres/{{ genre.id }}">edytuj</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<div class="well">
+			<h5>brak gatunków w bazie</h5>
+		</div>
+	{% endif %}
+{% endblock %}

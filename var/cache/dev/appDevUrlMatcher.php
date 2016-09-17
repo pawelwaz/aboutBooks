@@ -109,9 +109,89 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        // settings
+        if ($pathinfo === '/settings') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::settingsAction',  '_route' => 'settings',);
+        }
+
         // login
         if ($pathinfo === '/login') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::loginAction',  '_route' => 'login',);
+        }
+
+        if (0 === strpos($pathinfo, '/user')) {
+            // users
+            if ($pathinfo === '/users') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::usersAction',  '_route' => 'users',);
+            }
+
+            // useredit
+            if (0 === strpos($pathinfo, '/useredit') && preg_match('#^/useredit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'useredit')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::usereditAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/writer')) {
+            // writers
+            if ($pathinfo === '/writers') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::writersAction',  '_route' => 'writers',);
+            }
+
+            // writeredit
+            if (preg_match('#^/writer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'writeredit')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::writerEditAction',));
+            }
+
+            // writer
+            if ($pathinfo === '/writer') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::writerAction',  '_route' => 'writer',);
+            }
+
+            // writerdetails
+            if (0 === strpos($pathinfo, '/writerdetails') && preg_match('#^/writerdetails/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'writerdetails')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::writerDetailsAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/genres')) {
+            // genres
+            if ($pathinfo === '/genres') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::genresAction',  '_route' => 'genres',);
+            }
+
+            // genresEdit
+            if (preg_match('#^/genres/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'genresEdit')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::genresEditAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/book')) {
+            // books
+            if ($pathinfo === '/books') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::booksAction',  '_route' => 'books',);
+            }
+
+            if (0 === strpos($pathinfo, '/bookedit')) {
+                // bookedit
+                if (preg_match('#^/bookedit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bookedit')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::bookEditAction',));
+                }
+
+                // book
+                if ($pathinfo === '/bookedit') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::bookAction',  '_route' => 'book',);
+                }
+
+            }
+
+            // bookdetails
+            if (0 === strpos($pathinfo, '/bookdetails') && preg_match('#^/bookdetails/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bookdetails')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::bookDetailsAction',));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

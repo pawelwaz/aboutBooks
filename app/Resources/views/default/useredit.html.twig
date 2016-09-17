@@ -1,0 +1,22 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+<div class="alert alert-success" role="alert" style="max-width: 300px; margin: 5px auto;">{{ editSuccess }}</div>
+<div class="alert alert-danger" role="alert" style="max-width: 300px; margin: 5px auto;">{{ editError }}</div>
+<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+	<h5>nazwa i typ konta</h5>
+	{{ form_start(UserEditForm) }}
+	{{ form_widget(UserEditForm.login, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'login' } }) }}
+	{{ form_widget(UserEditForm.creds, { 'attr': { 'class': 'form-element form-control' } }) }}
+	{{ form_widget(UserEditForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+	{{ form_end(UserEditForm) }}
+</div>
+<div class="well big-well" style="max-width: 300px; margin: 5px auto;">
+	<h5>reset hasła</h5>
+	{{ form_start(PasswordChangeForm) }}
+	{{ form_widget(PasswordChangeForm.new, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nowe hasło' } }) }}
+	{{ form_widget(PasswordChangeForm.retype, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'powtórz hasło' } }) }}
+	{{ form_widget(PasswordChangeForm.ok, { 'attr': { 'class': 'form-element btn btn-primary' } }) }}
+	{{ form_end(PasswordChangeForm, { 'render_rest' : false }) }}
+</div>
+{% endblock %}

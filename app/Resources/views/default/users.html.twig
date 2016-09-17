@@ -1,0 +1,28 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<table class="table-bordered" style="margin: 5px auto;">
+	<thead>
+		<tr>
+			<td>id</td>
+			<td>login</td>
+			<td>typ konta</td>
+			<td>opcje</td>
+		</tr>
+		{% for user in users %}
+			<tr>
+				<td>{{ user.id }}</td>
+				<td>{{ user.login }}</td>
+				<td>
+					{% if user.creds == 1 %}
+						administrator
+					{% else %}
+						użytkownik
+					{% endif %}
+				</td>
+				<td><a href="/useredit/{{ user.id }}">edytuj</a></td>
+			</tr>
+		{% endfor %}
+	</thead>
+	</table>
+{% endblock %}

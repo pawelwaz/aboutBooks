@@ -1,0 +1,26 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="well">
+		<h5 style="display: inline">wyszukaj</h5>
+		{{ form_start(searchForm,  { attr: {novalidate: 'novalidate'} } ) }}
+		{{ form_widget(searchForm.title, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'tytuł', 'style' : 'display:inline; max-width: 200px;' } }) }}
+		{{ form_widget(searchForm.writername, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'imię autora', 'style' : 'display:inline; max-width: 200px' } }) }}
+		{{ form_widget(searchForm.writersurname, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'nazwisko autora', 'style' : 'display:inline; max-width: 200px' } }) }}
+		{{ form_widget(searchForm.genre, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'gatunek', 'style' : 'display:inline; max-width: 200px' } }) }}
+		{{ form_widget(searchForm.ok, { 'attr': { 'class': 'form-element btn btn-primary', 'style' : 'display:inline;' } }) }}
+		{{ form_end(searchForm) }}
+	</div>
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<a href="/bookedit" class="btn btn-primary" style="margin: 5px auto;">dodaj książkę</a>
+	<h3>Lista książek</h3>
+	{% if books|length > 0 %}
+		{% for book in books %}
+			<div class="well big-well" style="max-width: 400px; text-align: left;">
+				<a href="/bookdetails/{{ book.id }}">Tytuł: {{ book.title }}<br />autor: {{ book.writername }} {{ book.surname }}<br />gatunek: {{ book.genrename }}</a>
+			</div>
+		{% endfor %}
+	{% else %}
+		<h3>brak książek spełniających zadane kryteria</h3>
+	{% endif %}
+{% endblock %}

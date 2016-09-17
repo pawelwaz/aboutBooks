@@ -1,0 +1,37 @@
+{% extends 'baseMenu.html.twig' %}
+
+{% block body %}
+	<div class="alert alert-success" role="alert" style="max-width: 300px; margin: auto;">{{ saveSuccess }}</div>
+	<h2>{{ book.title }}</h2>
+	<h5>Autor: <a href="/writerdetails/{{ writer.id }}">{{ writer.name }} {{ writer.surname }}</a></h5>
+	<h5>Gatunek: {{ genre.name }}</h5>
+	{% if (book.moder == app.session.get('userId') or app.session.get('creds') == 1) %}
+		<a href="/bookedit/{{ book.id }}" class="btn btn-primary" style="margin: 2px auto;">edytuj</a>
+	{% endif %}
+	<div class="well">
+		<h5>opis:</h5>
+		{% if book.description|length > 0 %}
+			{{ book.description }}
+		{% else %}
+			książka nie ma jeszcze opisu
+		{% endif %}
+	</div>
+	<div class="well" style="max-width: 400px; margin: 0px auto;">
+		<h5>napisz komentarz</h5>
+		{{ form_start(commentForm) }}
+		{{ form_widget(commentForm.content, { 'attr': { 'class': 'form-element form-control', 'placeholder': 'treść komentarza' } }) }}
+		{{ form_widget(commentForm.ok, { 'attr': { 'class': 'form-element btn btn-primary', 'style' : 'display:inline;' } }) }}
+		{{ form_end(commentForm) }}
+	</div>
+	<h5>Komentarze</h5>
+	{% if comments|length > 0 %}
+		{% for comment in comments %}
+			<div class="well" style="text-align: left; max-width: 400px; margin: 2px auto;">
+				<h5>{{ comment.login }}</h5>
+				{{ comment.content }}
+			</div>
+		{% endfor %}
+	{% else %}
+		(jeszcze nikt nie skomentował tej książki)
+	{% endif %}
+{% endblock %}
