@@ -313,7 +313,7 @@ class DefaultController extends Controller
 	 */
 	public function writerDetailsAction($id, Request $request) {
 		$session = $request->getSession();
-		if(!($session->has('userId')) or $session->get('creds') == 0) {
+		if(!($session->has('userId'))) {
 			return $this->redirectToRoute('login');
 		}
 		$saveSuccess = "";
